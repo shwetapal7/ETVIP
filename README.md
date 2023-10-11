@@ -1,1 +1,2 @@
-# ETVIP
+E-learning
+I have created an e-learning platform using HTML, CSS, and JavaScript. This platform offers interactive and engaging online courses, enabling students to learn at their own pace. It provides a user-friendly interface for accessing course materials, taking assessments, and tracking progress. Students can enjoy a rich multimedia learning experience while instructors can manage content and monitor student performance efficiently.
