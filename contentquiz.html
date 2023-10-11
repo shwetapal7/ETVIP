@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>content Quiz</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Content Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>What is the primary goal of content marketing?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> Increase website traffic
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b">Drive sales
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> Provide valuable and relevant content 
+                </label>
+            </div>
+            <div class="question">
+                <p>Which of the following is not a type of content marketing?</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> Blogging
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> video marketing
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> Display advertising
+                </label>
+            </div>
+            <div class="question">
+                <p>What is the key benefit of evergreen content?</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> short-term
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> long term 
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> Both
+                </label>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    const quizForm = document.getElementById('quiz-form');
+const result = document.getElementById('result');
+
+quizForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    const answers = {
+        q1: 'c',
+        q2: 'a',
+        q3: 'b'
+    };
+    
+    let score = 0;
+    
+    for (const question in answers) {
+        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedAnswer) {
+            if (selectedAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+    }
+    
+    const percentage = (score / Object.keys(answers).length) * 100;
+    
+    result.textContent = `Your score: ${score}/${Object.keys(answers).length} (${percentage}%)`;
+});
+
+</script>
+</html>

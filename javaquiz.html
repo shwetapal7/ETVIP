@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Quiz</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Java Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>What does JVM stand for?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> Java Virtual Machine
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> Java Virtual Memory
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> Java Very Modern
+                </label>
+            </div>
+            <div class="question">
+                <p>Which keyword is used to define a constant in Java?</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> const
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> final
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> static
+                </label>
+            </div>
+            <div class="question">
+                <p>What is the default value of an instance variable in Java?</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> 0
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> null
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> Depends on the data type
+                </label>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    const quizForm = document.getElementById('quiz-form');
+const result = document.getElementById('result');
+
+quizForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    const answers = {
+        q1: 'a',
+        q2: 'b',
+        q3: 'c'
+    };
+    
+    let score = 0;
+    
+    for (const question in answers) {
+        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedAnswer) {
+            if (selectedAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+    }
+    
+    const percentage = (score / Object.keys(answers).length) * 100;
+    
+    result.textContent = `Your score: ${score}/${Object.keys(answers).length} (${percentage}%)`;
+});
+
+</script>
+</html>

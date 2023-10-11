@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Quiz</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Html Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>What does HTML stand for?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> Home Text markup language
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> Hyper text markup language 
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> None of the above 
+                </label>
+            </div>
+            <div class="question">
+                <p>What come after html</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> body
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> title
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> head
+                </label>
+            </div>
+            <div class="question">
+                <p>How many sizes of headers are avaliable in HTML by default</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> 5
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> 1
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> 6
+                </label>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    const quizForm = document.getElementById('quiz-form');
+const result = document.getElementById('result');
+
+quizForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    const answers = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'c'
+    };
+    
+    let score = 0;
+    
+    for (const question in answers) {
+        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedAnswer) {
+            if (selectedAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+    }
+    
+    const percentage = (score / Object.keys(answers).length) * 100;
+    
+    result.textContent = `Your score: ${score}/${Object.keys(answers).length} (${percentage}%)`;
+});
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>my form</title>
+        <link rel="stylesheet" href="form.css">
+    </head>
+    <body>
+        <form onsubmit="tryforfree()" action="learning.html">
+            <h2>Enter your details</h2>
+            <input type="text"  id =" username" placeholder="username"><br>
+            <input type="password" id="password" placeholder="password"><br>
+            <input type="Email" id="Email" placeholder="Email"><br>
+            <button  type="submit">Submit</button>
+
+        </form>
+        <script type="text/javascript">
+            function tryforfree(){
+                var username = document.getElementById("username");
+                var password = document.getElementById("password");
+                var Email = document.getElementById("Email");
+                if(username==""){
+                    alert("enter valid username");
+                    return false;
+                }
+                else if(password==""){
+                    alert("Enter your password");
+                    return false;
+
+                }
+                else if(Email==""){
+                    alert("Enter your email");
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+
+        </script>
+    </body>
+</html>
